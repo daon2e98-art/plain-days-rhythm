@@ -249,3 +249,125 @@ button.checked {
     background: #eeeeef;
     border-radius: 5px;
 }
+
+/* 월간 히트맵 버튼 */
+
+.history-toggle {
+    grid-column: 1 / -1;
+
+    width: 100%;
+    margin-top: 10px;
+    padding: 6px;
+
+    border: 0;
+    border-top: 1px solid var(--line);
+    background: transparent;
+
+    color: var(--subtext);
+    font-size: 8px;
+    cursor: pointer;
+}
+
+
+/* 월간 기록 영역 */
+
+.history-panel {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+}
+
+.history-panel[hidden] {
+    display: none;
+}
+
+.month-header {
+    display: grid;
+    grid-template-columns: 22px 1fr 22px;
+    align-items: center;
+
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.month-header strong {
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.month-nav {
+    padding: 2px;
+    border: 0;
+    background: transparent;
+
+    color: var(--subtext);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* 요일과 날짜 */
+
+.weekdays,
+.heatmap-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.weekdays {
+    margin-bottom: 4px;
+}
+
+.weekdays span {
+    text-align: center;
+    color: var(--subtext);
+    font-size: 6px;
+}
+
+.heatmap-day,
+.heatmap-empty {
+    aspect-ratio: 1;
+}
+
+.heatmap-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #86868b;
+    font-size: 6px;
+}
+
+
+/* 완료 정도 */
+
+.heatmap-day.level-0 {
+    background: #eeeeef;
+}
+
+.heatmap-day.level-1 {
+    background: #d6d6d8;
+}
+
+.heatmap-day.level-2 {
+    background: #aaaab0;
+    color: #ffffff;
+}
+
+.heatmap-day.level-3 {
+    background: #656569;
+    color: #ffffff;
+}
+
+.heatmap-day.level-4 {
+    background: #1d1d1f;
+    color: #ffffff;
+}
+
+.heatmap-day.today {
+    outline: 1px solid #1d1d1f;
+    outline-offset: 2px;
+}
+
