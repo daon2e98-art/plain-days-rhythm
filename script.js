@@ -235,4 +235,166 @@ loadHabitLabels();
 migrateOldHabits();
 loadHabits();
 
+/* 월간 리듬 히트맵 */
+
+let viewedDate = new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    1
+);
+
+const historyButton = document.createElement("button");
+historyButton.className = "history-toggle";
+historyButton.type = "button";
+historyButton.textContent = "View month";
+
+const historyPanel = document.createElement("section");
+historyPanel.className = "history-panel";
+historyPanel.hidden = true;
+
+historyPanel.innerHTML = `
+    <div class="month-header">
+        <button class="month-nav prev-month" type="button">‹</button>
+        <strong id="monthTitle"></strong>
+        <button class="month-nav next-month" type="button">›</button>
+    </div>
+
+    <div class="weekdays">
+        <span>S</span>
+        <span>M</span>
+        <span>T</span>
+        <span>W</span>
+        <span>T</span>
+        <span>F</span>
+        <span>S</span>
+    </div>
+
+    <div class="heatmap-grid" id="heatmapGrid"></div>
+`;
+
+document.querySelector(".widget").append(
+    historyButton,
+    historyPanel
+);
+
+
+/* 월간 기록 열고 닫기 */
+
+historyButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    historyPanel.hidden = !historyPanel.hidden;
+
+    historyButton.textContent =
+        historyPanel.hidden
+            ? "View month"
+            : "Close month";
+
+    if (!historyPanel.hidden) {
+        renderHeatmap();
+    }
+});
+
+
+/* 이전 달과 다음 달 */
+
+historyPanel
+    .querySelector(".prev-month")
+    .addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        viewedDate.setMonth(viewedDate.getMonth() - 1);
+        renderHeatmap();
+    });
+
+historyPanel
+    .querySelector(".next-month")
+    .addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        viewedDate.setMonth(viewedDate.getMonth() + 1);
+        renderHeatmap();
+    });
+
+
+/* 히트맵 그리기 */
+
+function renderHeatmap() {
+    const year = viewedDate.getFullYear();
+    const month = viewedDate.getMonth();
+
+    const firstWeekday =
+        new Date(year, month, 1).getDay();
+
+    const numberOfDays =
+        new Date(year, month + 1, 0).getDate();
+
+    const history =
+        readStorage(HISTORY_STORAGE_KEY, {});
+
+    const grid =
+        document.getElementById("heatmapGrid");
+
+    const title =
+        document.getElementById("monthTitle");
+
+    title.textContent =
+        viewedDate.toLocaleString("en", {
+            month: "long",
+            year: "numeric"
+        });
+
+    grid.innerHTML = "";
+
+    for (let i = 0; i < firstWeekday; i++) {
+        const empty = document.createElement("span");
+        empty.className = "heatmap-empty";
+        grid.appendChild(empty);
+    }
+
+    for (let day = 1; day <= numberOfDays; day++) {
+        const date = new Date(year, month, day);
+        const dateKey = getDateKey(date);
+
+        const habits = history[dateKey] || [];
+        const completed = habits.filter(Boolean).length;
+        const total = habits.length || 5;
+        const percent = completed / total;
+
+        const cell = document.createElement("span");
+
+        cell.className = "heatmap-day";
+        cell.textContent = day;
+        cell.title = `${dateKey} · ${completed}/${total}`;
+
+        if (percent === 0) {
+            cell.classList.add("level-0");
+        } else if (percent <= 0.25) {
+            cell.classList.add("level-1");
+        } else if (percent <= 0.5) {
+            cell.classList.add("level-2");
+        } else if (percent < 1) {
+            cell.classList.add("level-3");
+        } else {
+            cell.classList.add("level-4");
+        }
+
+        if (dateKey === getDateKey()) {
+            cell.classList.add("today");
+        }
+
+        grid.appendChild(cell);
+    }
+}
+
+
+/* 체크할 때 히트맵도 갱신 */
+
+document.querySelectorAll(".habit").forEach((habit) => {
+    habit.addEventListener("click", () => {
+        if (!historyPanel.hidden) {
+            setTimeout(renderHeatmap, 0);
+        }
+    });
+});
 
