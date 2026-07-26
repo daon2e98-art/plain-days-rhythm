@@ -1,0 +1,215 @@
+body {
+
+    margin:0;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:#ffffff;
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    Pretendard,
+    sans-serif;
+
+    color:#1D1D1F;
+
+}
+
+
+
+.widget {
+
+    width:340px;
+
+    padding:36px;
+
+
+    background:
+    rgba(250,250,250,0.85);
+
+
+    backdrop-filter: blur(20px);
+
+
+    border-radius:28px;
+
+
+    box-shadow:
+    0 20px 50px rgba(0,0,0,0.06);
+
+}
+
+
+
+.brand h1 {
+
+    margin:0;
+
+    font-size:24px;
+
+    font-weight:600;
+
+}
+
+
+
+.brand p {
+
+    margin:4px 0 0;
+
+    color:#86868B;
+
+}
+
+
+
+.date {
+
+    margin:40px 0;
+
+}
+
+
+
+#day {
+
+    display:block;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+
+    color:#86868B;
+
+}
+
+
+
+#date {
+
+    font-size:34px;
+
+    font-weight:500;
+
+}
+
+
+
+.habit {
+
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+
+    padding:16px 0;
+
+
+    cursor:pointer;
+
+
+    border-bottom:
+    1px solid #EFEFEF;
+
+
+}
+
+
+
+.habit span {
+
+    font-size:16px;
+
+}
+
+
+
+button {
+
+
+    border:none;
+
+    background:none;
+
+
+    font-size:25px;
+
+
+    color:#C7C7CC;
+
+
+}
+
+
+
+button.checked {
+
+
+    color:#1D1D1F;
+
+    transform:scale(1.1);
+
+}
+
+
+
+.divider {
+
+    margin:30px 0;
+
+    height:1px;
+
+    background:#ECECEC;
+
+}
+
+
+
+.progress {
+
+    text-align:center;
+
+}
+
+
+
+#percent {
+
+    font-size:44px;
+
+    font-weight:600;
+
+}
+
+
+
+.progress p {
+
+    color:#86868B;
+
+}
+
+
+
+.quote {
+
+
+    margin-top:30px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    color:#86868B;
+
+    font-style:italic;
+
+}

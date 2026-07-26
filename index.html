@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Plain Days Rhythm</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="widget">
+
+    <div class="brand">
+        <h1>Plain Days</h1>
+        <p>Rhythm</p>
+    </div>
+
+
+    <div class="date">
+        <span id="day"></span>
+        <strong id="date"></strong>
+    </div>
+
+
+    <div class="habits">
+
+        <div class="habit" data-id="0" onclick="toggleHabit(this)">
+            <span>Morning Routine</span>
+            <button>○</button>
+        </div>
+
+        <div class="habit" data-id="1" onclick="toggleHabit(this)">
+            <span>Drink Water</span>
+            <button>○</button>
+        </div>
+
+        <div class="habit" data-id="2" onclick="toggleHabit(this)">
+            <span>Move Body</span>
+            <button>○</button>
+        </div>
+
+        <div class="habit" data-id="3" onclick="toggleHabit(this)">
+            <span>Read</span>
+            <button>○</button>
+        </div>
+
+        <div class="habit" data-id="4" onclick="toggleHabit(this)">
+            <span>Journal</span>
+            <button>○</button>
+        </div>
+
+    </div>
+
+
+    <div class="divider"></div>
+
+
+    <div class="progress">
+
+        <div id="percent">
+            0%
+        </div>
+
+        <p>
+            Today's rhythm
+        </p>
+
+    </div>
+
+
+    <div class="quote">
+        Small steps count.
+    </div>
+
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
