@@ -283,14 +283,24 @@ document.querySelector(".widget").append(
 historyButton.addEventListener("click", (event) => {
     event.stopPropagation();
 
-    historyPanel.hidden = !historyPanel.hidden;
+    const widget = document.querySelector(".widget");
+    const isMonthMode =
+        widget.classList.toggle("month-mode");
+
+    historyPanel.hidden = !isMonthMode;
 
     historyButton.textContent =
-        historyPanel.hidden
-            ? "View month"
-            : "Close month";
+        isMonthMode
+            ? "Back to today"
+            : "View month";
 
-    if (!historyPanel.hidden) {
+    if (isMonthMode) {
+        viewedDate = new Date(
+            new Date().getFullYear(),
+            new Date().getMonth(),
+            1
+        );
+
         renderHeatmap();
     }
 });
