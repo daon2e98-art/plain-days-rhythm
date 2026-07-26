@@ -1,215 +1,141 @@
+:root {
+    --background: #ffffff;
+    --card: rgba(250, 250, 250, 0.88);
+    --text: #1d1d1f;
+    --subtext: #86868b;
+    --line: #ececec;
+    --empty: #c7c7cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 16px;
 
-    margin:0;
-    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:#ffffff;
+    background: var(--background);
 
     font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    "SF Pro Display",
-    Pretendard,
-    sans-serif;
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Pretendard,
+        sans-serif;
 
-    color:#1D1D1F;
-
+    color: var(--text);
 }
-
-
 
 .widget {
+    width: 260px;
+    padding: 22px;
 
-    width:340px;
-
-    padding:36px;
-
-
-    background:
-    rgba(250,250,250,0.85);
-
-
+    background: var(--card);
     backdrop-filter: blur(20px);
 
-
-    border-radius:28px;
-
+    border-radius: 20px;
 
     box-shadow:
-    0 20px 50px rgba(0,0,0,0.06);
-
+        0 12px 32px rgba(0, 0, 0, 0.055);
 }
-
-
 
 .brand h1 {
-
-    margin:0;
-
-    font-size:24px;
-
-    font-weight:600;
-
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
 }
-
-
 
 .brand p {
-
-    margin:4px 0 0;
-
-    color:#86868B;
-
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--subtext);
 }
-
-
 
 .date {
-
-    margin:40px 0;
-
+    margin: 24px 0 22px;
 }
-
-
 
 #day {
+    display: block;
+    margin-bottom: 3px;
 
-    display:block;
-
-    font-size:12px;
-
-    letter-spacing:2px;
-
-    color:#86868B;
-
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    color: var(--subtext);
 }
-
-
 
 #date {
-
-    font-size:34px;
-
-    font-weight:500;
-
+    font-size: 23px;
+    font-weight: 500;
 }
-
-
 
 .habit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
+    min-height: 43px;
 
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-
-    padding:16px 0;
-
-
-    cursor:pointer;
-
-
-    border-bottom:
-    1px solid #EFEFEF;
-
-
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
 }
-
-
 
 .habit span {
-
-    font-size:16px;
-
+    font-size: 12px;
 }
-
-
 
 button {
+    padding: 0;
+    border: none;
+    background: none;
 
+    font-size: 17px;
+    line-height: 1;
+    color: var(--empty);
 
-    border:none;
-
-    background:none;
-
-
-    font-size:25px;
-
-
-    color:#C7C7CC;
-
-
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
 }
-
-
 
 button.checked {
-
-
-    color:#1D1D1F;
-
-    transform:scale(1.1);
-
+    color: var(--text);
+    transform: scale(1.08);
 }
-
-
 
 .divider {
-
-    margin:30px 0;
-
-    height:1px;
-
-    background:#ECECEC;
-
+    height: 1px;
+    margin: 20px 0 16px;
+    background: var(--line);
 }
-
-
 
 .progress {
-
-    text-align:center;
-
+    text-align: center;
 }
-
-
 
 #percent {
-
-    font-size:44px;
-
-    font-weight:600;
-
+    font-size: 30px;
+    font-weight: 600;
 }
-
-
 
 .progress p {
-
-    color:#86868B;
-
+    margin: 4px 0 0;
+    font-size: 11px;
+    color: var(--subtext);
 }
 
-
-
 .quote {
+    margin-top: 18px;
 
-
-    margin-top:30px;
-
-    text-align:center;
-
-    font-size:13px;
-
-    color:#86868B;
-
-    font-style:italic;
-
+    text-align: center;
+    font-size: 9px;
+    font-style: italic;
+    color: var(--subtext);
 }
