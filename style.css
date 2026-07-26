@@ -1,9 +1,8 @@
 :root {
-    --background: #ffffff;
-    --card: rgba(250, 250, 250, 0.88);
+    --card: #fafafa;
     --text: #1d1d1f;
     --subtext: #86868b;
-    --line: #ececec;
+    --line: #e8e8e8;
     --empty: #c7c7cc;
 }
 
@@ -14,13 +13,13 @@
 body {
     margin: 0;
     min-height: 100vh;
-    padding: 16px;
+    padding: 6px;
 
     display: flex;
     justify-content: center;
     align-items: flex-start;
 
-    background: var(--background);
+    background: #ffffff;
 
     font-family:
         -apple-system,
@@ -33,73 +32,103 @@ body {
 }
 
 .widget {
-    width: 260px;
-    padding: 22px;
+    width: 230px;
+    padding: 14px;
+
+    display: grid;
+    grid-template-columns: 1fr auto;
+    column-gap: 12px;
 
     background: var(--card);
-    backdrop-filter: blur(20px);
-
-    border-radius: 20px;
+    border-radius: 15px;
 
     box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.055);
+        0 10px 25px rgba(0, 0, 0, 0.05);
 }
+
+/* 브랜드 */
 
 .brand h1 {
     margin: 0;
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 600;
 }
 
 .brand p {
-    margin: 2px 0 0;
-    font-size: 12px;
+    margin: 1px 0 0;
+    font-size: 8px;
     color: var(--subtext);
 }
 
+/* 날짜 */
+
 .date {
-    margin: 24px 0 22px;
+    margin: 0;
+    text-align: right;
 }
 
 #day {
     display: block;
-    margin-bottom: 3px;
 
-    font-size: 9px;
-    letter-spacing: 1.8px;
+    font-size: 7px;
+    letter-spacing: 1px;
     color: var(--subtext);
 }
 
 #date {
-    font-size: 23px;
+    display: block;
+    margin-top: 2px;
+
+    font-size: 10px;
     font-weight: 500;
 }
 
-.habit {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* 습관 2열 */
 
-    min-height: 43px;
+.habits {
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 14px;
+
+    margin-top: 14px;
+}
+
+.habit {
+    min-width: 0;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 4px;
 
     border-bottom: 1px solid var(--line);
     cursor: pointer;
 }
 
 .habit span {
-    font-size: 12px;
+    overflow: hidden;
+
+    font-size: 8px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 button {
+    flex-shrink: 0;
+
     padding: 0;
-    border: none;
+    border: 0;
     background: none;
 
-    font-size: 17px;
-    line-height: 1;
     color: var(--empty);
+    font-size: 12px;
+    line-height: 1;
 
     cursor: pointer;
+
     transition:
         color 0.2s ease,
         transform 0.2s ease;
@@ -110,97 +139,45 @@ button.checked {
     transform: scale(1.08);
 }
 
+/* 하단 */
+
 .divider {
+    grid-column: 1 / -1;
+
     height: 1px;
-    margin: 20px 0 16px;
+    margin: 12px 0 9px;
+
     background: var(--line);
 }
 
 .progress {
-    text-align: center;
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
 }
 
 #percent {
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 600;
 }
 
 .progress p {
-    margin: 4px 0 0;
-    font-size: 11px;
+    margin: 0;
+
     color: var(--subtext);
-}
-
-.quote {
-    margin-top: 18px;
-
-    text-align: center;
-    font-size: 9px;
-    font-style: italic;
-    color: var(--subtext);
-}
-
-/* Plain Days — Extra Mini Size */
-
-body {
-    padding: 8px;
-}
-
-.widget {
-    width: 190px;
-    padding: 14px;
-    border-radius: 15px;
-}
-
-.brand h1 {
-    font-size: 14px;
-}
-
-.brand p {
-    margin-top: 1px;
-    font-size: 9px;
-}
-
-.date {
-    margin: 16px 0 14px;
-}
-
-#day {
-    margin-bottom: 2px;
-    font-size: 7px;
-    letter-spacing: 1.4px;
-}
-
-#date {
-    font-size: 17px;
-}
-
-.habit {
-    min-height: 31px;
-}
-
-.habit span {
-    font-size: 9px;
-}
-
-button {
-    font-size: 13px;
-}
-
-.divider {
-    margin: 14px 0 11px;
-}
-
-#percent {
-    font-size: 22px;
-}
-
-.progress p {
-    margin-top: 2px;
     font-size: 8px;
 }
 
 .quote {
-    margin-top: 11px;
+    grid-column: 1 / -1;
+
+    margin-top: 9px;
+
+    text-align: center;
+    color: var(--subtext);
     font-size: 7px;
+    font-style: italic;
 }
