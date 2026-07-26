@@ -1,3 +1,145 @@
+:root {
+    --background: #ffffff;
+    --card: rgba(250, 250, 250, 0.88);
+    --text: #1d1d1f;
+    --subtext: #86868b;
+    --line: #ececec;
+    --empty: #c7c7cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 16px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: var(--background);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Pretendard,
+        sans-serif;
+
+    color: var(--text);
+}
+
+.widget {
+    width: 260px;
+    padding: 22px;
+
+    background: var(--card);
+    backdrop-filter: blur(20px);
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.055);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.brand p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--subtext);
+}
+
+.date {
+    margin: 24px 0 22px;
+}
+
+#day {
+    display: block;
+    margin-bottom: 3px;
+
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    color: var(--subtext);
+}
+
+#date {
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.habit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    min-height: 43px;
+
+    border-bottom: 1px solid var(--line);
+    cursor: pointer;
+}
+
+.habit span {
+    font-size: 12px;
+}
+
+button {
+    padding: 0;
+    border: none;
+    background: none;
+
+    font-size: 17px;
+    line-height: 1;
+    color: var(--empty);
+
+    cursor: pointer;
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+button.checked {
+    color: var(--text);
+    transform: scale(1.08);
+}
+
+.divider {
+    height: 1px;
+    margin: 20px 0 16px;
+    background: var(--line);
+}
+
+.progress {
+    text-align: center;
+}
+
+#percent {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.progress p {
+    margin: 4px 0 0;
+    font-size: 11px;
+    color: var(--subtext);
+}
+
+.quote {
+    margin-top: 18px;
+
+    text-align: center;
+    font-size: 9px;
+    font-style: italic;
+    color: var(--subtext);
+}
+
 /* Plain Days — Extra Mini Size */
 
 body {
