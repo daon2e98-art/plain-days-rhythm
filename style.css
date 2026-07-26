@@ -371,3 +371,43 @@ button.checked {
     outline-offset: 2px;
 }
 
+
+/* 월간 화면으로 전환 */
+
+.widget.month-mode > .brand,
+.widget.month-mode > .date,
+.widget.month-mode > .habits,
+.widget.month-mode > .divider,
+.widget.month-mode > .progress,
+.widget.month-mode > .quote {
+    display: none;
+}
+
+/* 월간 화면을 카드 첫 번째 위치에 표시 */
+
+.widget.month-mode .history-panel {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    width: 100%;
+    margin-top: 0;
+}
+
+/* 돌아가기 버튼을 카드 하단에 표시 */
+
+.widget.month-mode .history-toggle {
+    grid-column: 1 / -1;
+    grid-row: 2;
+
+    margin-top: 12px;
+}
+
+/* 두 화면의 카드 크기 안정화 */
+
+.widget {
+    min-height: 230px;
+}
+
+.widget.month-mode {
+    align-content: start;
+}
