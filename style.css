@@ -411,3 +411,39 @@ button.checked {
 .widget.month-mode {
     align-content: start;
 }
+
+
+/* 기록 없는 지난 날짜 */
+
+.heatmap-day.no-record {
+    background: transparent;
+    color: #b8b8bd;
+}
+
+/* 아직 오지 않은 날짜 */
+
+.heatmap-day.future {
+    background: transparent;
+    color: #dddddf;
+    opacity: 0.45;
+}
+
+/* 오늘 날짜 */
+
+.heatmap-day.today {
+    outline: 1px solid #1d1d1f;
+    outline-offset: 2px;
+}
+
+/* 부드러운 변화 */
+
+.heatmap-day {
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.heatmap-day:hover {
+    transform: scale(1.08);
+}
