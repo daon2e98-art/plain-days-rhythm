@@ -366,10 +366,56 @@ function renderHeatmap() {
         const date = new Date(year, month, day);
         const dateKey = getDateKey(date);
 
-        const habits = history[dateKey] || [];
-        const completed = habits.filter(Boolean).length;
-        const total = habits.length || 5;
-        const percent = completed / total;
+        const hasRecord =
+    Array.isArray(history[dateKey]);
+
+const habits =
+    hasRecord ? history[dateKey] : [];
+
+const completed =
+    habits.filter(Boolean).length;
+
+const total =
+    habits.length || 5;
+
+const percent =
+    completed / total;
+
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
+const isFuture = date > today;
+
+const cell = document.createElement("span");
+
+cell.className = "heatmap-day";
+cell.textContent = day;
+cell.title = hasRecord
+    ? `${dateKey} · ${completed}/${total}`
+    : `${dateKey} · No record`;
+
+
+/* 날짜 상태 구분 */
+
+if (isFuture) {
+    cell.classList.add("future");
+} else if (!hasRecord) {
+    cell.classList.add("no-record");
+} else if (percent === 0) {
+    cell.classList.add("level-0");
+} else if (percent <= 0.25) {
+    cell.classList.add("level-1");
+} else if (percent <= 0.5) {
+    cell.classList.add("level-2");
+} else if (percent < 1) {
+    cell.classList.add("level-3");
+} else {
+    cell.classList.add("level-4");
+}
+
+if (dateKey === getDateKey()) {
+    cell.classList.add("today");
+}
 
         const cell = document.createElement("span");
 
