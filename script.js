@@ -1,138 +1,169 @@
-// 날짜 표시
-const STORAGE_KEY = "plain-days-rhythm";
+const HABIT_STORAGE_KEY = "plain-days-rhythm";
+const LABEL_STORAGE_KEY = "plain-days-rhythm-labels";
+
+/* 오늘 날짜 표시 */
+
 const today = new Date();
 
 const days = [
-"Sunday",
-"Monday",
-"Tuesday",
-"Wednesday",
-"Thursday",
-"Friday",
-"Saturday"
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
 ];
 
+document.getElementById("day").textContent =
+    days[today.getDay()];
 
-document.getElementById("day").innerHTML =
-days[today.getDay()];
-
-
-document.getElementById("date").innerHTML =
-today.getDate()
-+
-" "
-+
-today.toLocaleString(
-"en",
-{
-month:"long",
-year:"numeric"
-}
-);
+document.getElementById("date").textContent =
+    `${today.getDate()} ${today.toLocaleString("en", {
+        month: "long",
+        year: "numeric"
+    })}`;
 
 
+/* 동그라미 체크 */
 
-// 체크 기능
+function toggleHabit(item) {
+    const button = item.querySelector("button");
+    const isChecked = button.classList.toggle("checked");
 
-function toggleHabit(item){
-
-    const button=item.querySelector("button");
-
-    if(button.innerHTML==="○"){
-
-        button.innerHTML="●";
-
-        button.classList.add("checked");
-
-    }else{
-
-        button.innerHTML="○";
-
-        button.classList.remove("checked");
-
-    }
+    button.textContent = isChecked ? "●" : "○";
 
     updateProgress();
     saveHabits();
-
 }
 
 
+/* 완료율 계산 */
 
-
-
-// 퍼센트 계산
-
-function updateProgress(){
-
+function updateProgress() {
     const total =
-    document.querySelectorAll("button").length;
-
+        document.querySelectorAll(".habit").length;
 
     const checked =
-    document.querySelectorAll(".checked").length;
-
+        document.querySelectorAll("button.checked").length;
 
     const percent =
-    Math.round(
-        checked / total * 100
-    );
+        Math.round((checked / total) * 100);
 
-
-    document.getElementById("percent")
-    .innerHTML =
-    percent+"%";
-
+    document.getElementById("percent").textContent =
+        `${percent}%`;
 }
 
 
-function saveHabits(){
+/* 체크 상태 저장 */
 
-    const habits=[];
+function saveHabits() {
+    const habits = [];
 
-    document.querySelectorAll(".habit").forEach(habit=>{
-
-        const checked=
-        habit.querySelector("button")
-        .classList.contains("checked");
-
-        habits.push(checked);
-
+    document.querySelectorAll(".habit").forEach((habit) => {
+        habits.push(
+            habit
+                .querySelector("button")
+                .classList.contains("checked")
+        );
     });
 
     localStorage.setItem(
-        STORAGE_KEY,
+        HABIT_STORAGE_KEY,
         JSON.stringify(habits)
     );
-
 }
 
 
-function loadHabits(){
+/* 체크 상태 불러오기 */
 
-    const data=
-    JSON.parse(
-        localStorage.getItem(STORAGE_KEY)
-    );
+function loadHabits() {
+    const saved = localStorage.getItem(HABIT_STORAGE_KEY);
 
-    if(!data) return;
+    if (!saved) return;
 
-    document.querySelectorAll(".habit").forEach((habit,index)=>{
+    const habits = JSON.parse(saved);
 
-        const button=
-        habit.querySelector("button");
+    document.querySelectorAll(".habit").forEach((habit, index) => {
+        const button = habit.querySelector("button");
+        const isChecked = Boolean(habits[index]);
 
-        if(data[index]){
-
-            button.innerHTML="●";
-            button.classList.add("checked");
-
-        }
-
+        button.classList.toggle("checked", isChecked);
+        button.textContent = isChecked ? "●" : "○";
     });
 
     updateProgress();
-
 }
 
+
+/* 습관 이름 저장 */
+
+function saveHabitLabels() {
+    const labels = [];
+
+    document.querySelectorAll(".habit span").forEach((label) => {
+        labels.push(label.textContent.trim());
+    });
+
+    localStorage.setItem(
+        LABEL_STORAGE_KEY,
+        JSON.stringify(labels)
+    );
+}
+
+
+/* 습관 이름 불러오기 */
+
+function loadHabitLabels() {
+    const saved = localStorage.getItem(LABEL_STORAGE_KEY);
+
+    if (!saved) return;
+
+    const labels = JSON.parse(saved);
+
+    document.querySelectorAll(".habit span").forEach((label, index) => {
+        if (labels[index]) {
+            label.textContent = labels[index];
+        }
+    });
+}
+
+
+/* 이름 직접 편집 설정 */
+
+document.querySelectorAll(".habit span").forEach((label) => {
+    label.setAttribute("contenteditable", "true");
+    label.setAttribute("spellcheck", "false");
+    label.setAttribute("title", "Click to edit");
+
+    /* 이름을 눌렀을 때 동그라미가 체크되지 않도록 막기 */
+    label.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
+
+    label.addEventListener("input", () => {
+        saveHabitLabels();
+    });
+
+    /* Enter를 누르면 편집 종료 */
+    label.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            label.blur();
+        }
+    });
+
+    /* 빈 이름 방지 */
+    label.addEventListener("blur", () => {
+        if (!label.textContent.trim()) {
+            label.textContent = "New Habit";
+        }
+
+        saveHabitLabels();
+    });
+});
+
+
+loadHabitLabels();
 loadHabits();
+updateProgress();
