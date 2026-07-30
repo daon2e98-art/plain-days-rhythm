@@ -563,6 +563,53 @@ document
         });
     });
 
+/* 효과음 켜기·끄기 */
+
+const soundToggle =
+    document.getElementById("soundToggle");
+
+
+function updateSoundButton() {
+    soundToggle.classList.toggle(
+        "muted",
+        !soundEnabled
+    );
+
+    soundToggle.textContent =
+        soundEnabled ? "♪" : "×";
+
+    soundToggle.title =
+        soundEnabled
+            ? "Turn sound off"
+            : "Turn sound on";
+}
+
+
+soundToggle.addEventListener("click", () => {
+    soundEnabled =
+        !soundEnabled;
+
+    localStorage.setItem(
+        SOUND_STORAGE_KEY,
+        soundEnabled ? "on" : "off"
+    );
+
+    updateSoundButton();
+
+    if (soundEnabled) {
+        playNote(
+            659,
+            0,
+            0.12,
+            "sine",
+            0.025
+        );
+    }
+});
+
+
+updateSoundButton();
+
 
 /* 시작 */
 
