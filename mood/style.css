@@ -777,3 +777,23 @@ button {
 .month-expression {
     font-size: 9px !important;
 }
+
+
+/* Week View — Prevent Clipping */
+
+.week-grid {
+    min-height: 0 !important;
+    height: 92px !important;
+    align-items: start !important;
+}
+
+.week-day {
+    height: 92px !important;
+    padding: 8px 1px !important;
+    gap: 10px !important;
+}
+
+.week-day.today {
+    border-radius: 10px !important;
+    outline-offset: -1px !important;
+}
