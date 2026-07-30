@@ -106,3 +106,57 @@ body {
         transform: scale(1);
     }
 }
+
+/* Clock Widget — Larger Text, Same Card Size */
+
+.clock-widget {
+    width: 230px !important;
+}
+
+
+/* 상단 */
+
+.clock-header,
+.clock-header span {
+    font-size: 10px !important;
+}
+
+.clock-header span:first-child {
+    font-weight: 600 !important;
+}
+
+.clock-dot {
+    font-size: 14px !important;
+}
+
+
+/* 시간 */
+
+.clock-time,
+#clockTime,
+#time {
+    font-size: 42px !important;
+    line-height: 1 !important;
+    letter-spacing: -1.5px !important;
+}
+
+
+/* 초 표시 */
+
+.clock-seconds,
+#seconds {
+    margin-left: 5px !important;
+
+    font-size: 11px !important;
+    line-height: 1 !important;
+}
+
+
+/* 날짜 */
+
+.clock-date,
+#clockDate,
+#date {
+    font-size: 9px !important;
+    letter-spacing: 0.5px !important;
+}
