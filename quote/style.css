@@ -1,0 +1,102 @@
+:root {
+    --background: #ffffff;
+    --card: #fafafa;
+    --text: #1d1d1f;
+    --subtext: #86868b;
+    --line: #e8e8e8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: var(--background);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Pretendard,
+        sans-serif;
+
+    color: var(--text);
+}
+
+.quote-widget {
+    width: 230px;
+    min-height: 145px;
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+
+    background: var(--card);
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.quote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 8px;
+}
+
+.quote-header span:first-child {
+    font-weight: 600;
+}
+
+.quote-header span:last-child {
+    color: var(--subtext);
+    font-size: 7px;
+}
+
+.quote-area {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+
+    padding: 17px 5px 14px;
+}
+
+#quote {
+    margin: 0;
+
+    max-width: 180px;
+
+    font-size: 15px;
+    font-weight: 550;
+    line-height: 1.35;
+    letter-spacing: -0.3px;
+}
+
+.quote-footer {
+    padding-top: 8px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--subtext);
+    font-size: 7px;
+}
+
+.symbol {
+    color: var(--text);
+    font-size: 10px;
+}
