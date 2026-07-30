@@ -555,7 +555,11 @@ document
     .querySelectorAll(".mood-option")
     .forEach((button) => {
         button.addEventListener("click", () => {
-            selectMood(button.dataset.mood);
+            const moodName =
+                button.dataset.mood;
+
+            selectMood(moodName);
+            playMoodSound(moodName);
         });
     });
 
