@@ -100,3 +100,46 @@ body {
     color: var(--text);
     font-size: 10px;
 }
+
+/* Quote Widget — Larger Text Version */
+
+.quote-widget {
+    width: 230px !important;
+    height: 250px !important;
+    padding: 16px !important;
+}
+
+/* 상단 브랜드와 안내 문구 */
+
+.quote-header,
+.quote-header span {
+    font-size: 11px !important;
+}
+
+.quote-label {
+    font-size: 9px !important;
+}
+
+/* 한 줄 명언 */
+
+#quoteText,
+.quote-text {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+    letter-spacing: -0.4px !important;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+/* 하단 날짜 */
+
+.quote-date,
+#quoteDate {
+    font-size: 9px !important;
+}
+
+/* 하단 동그라미 */
+
+.quote-dot {
+    font-size: 16px !important;
+}
