@@ -46,6 +46,127 @@ let viewedMonth = new Date(
     1
 );
 
+/* ========================================
+   기분 효과음
+======================================== */
+
+const SOUND_STORAGE_KEY =
+    "plain-days-mood-sound";
+
+let soundEnabled =
+    localStorage.getItem(SOUND_STORAGE_KEY)
+        !== "off";
+
+let audioContext;
+
+
+function getAudioContext() {
+    if (!audioContext) {
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        audioContext =
+            new AudioContext();
+    }
+
+    if (audioContext.state === "suspended") {
+        audioContext.resume();
+    }
+
+    return audioContext;
+}
+
+
+function playNote(
+    frequency,
+    delay,
+    duration,
+    type = "sine",
+    volume = 0.035
+) {
+    const context =
+        getAudioContext();
+
+    const startTime =
+        context.currentTime + delay;
+
+    const oscillator =
+        context.createOscillator();
+
+    const gain =
+        context.createGain();
+
+    oscillator.type =
+        type;
+
+    oscillator.frequency.setValueAtTime(
+        frequency,
+        startTime
+    );
+
+    gain.gain.setValueAtTime(
+        0.0001,
+        startTime
+    );
+
+    gain.gain.linearRampToValueAtTime(
+        volume,
+        startTime + 0.015
+    );
+
+    gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        startTime + duration
+    );
+
+    oscillator.connect(gain);
+    gain.connect(context.destination);
+
+    oscillator.start(startTime);
+    oscillator.stop(startTime + duration);
+}
+
+
+function playMoodSound(moodName) {
+    if (!soundEnabled) return;
+
+    const sounds = {
+        happy: [
+            [659, 0, 0.14, "sine", 0.035],
+            [784, 0.1, 0.18, "sine", 0.03]
+        ],
+
+        calm: [
+            [523, 0, 0.45, "sine", 0.025]
+        ],
+
+        tired: [
+            [440, 0, 0.2, "sine", 0.025],
+            [330, 0.17, 0.3, "sine", 0.02]
+        ],
+
+        sad: [
+            [392, 0, 0.22, "triangle", 0.025],
+            [294, 0.18, 0.38, "triangle", 0.02]
+        ],
+
+        angry: [
+            [165, 0, 0.08, "square", 0.018],
+            [145, 0.09, 0.08, "square", 0.018],
+            [165, 0.18, 0.08, "square", 0.018]
+        ]
+    };
+
+    const selectedSound =
+        sounds[moodName];
+
+    if (!selectedSound) return;
+
+    selectedSound.forEach((note) => {
+        playNote(...note);
+    });
+}
 
 /* 날짜 도구 */
 
