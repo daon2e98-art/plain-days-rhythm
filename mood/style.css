@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -33,10 +37,16 @@ body {
     color: var(--text);
 }
 
+button {
+    font-family: inherit;
+}
+
 .mood-widget {
     width: 230px;
-    min-height: 175px;
+    height: 205px;
     padding: 14px;
+
+    overflow: hidden;
 
     background: var(--card);
     border-radius: 15px;
@@ -44,6 +54,9 @@ body {
     box-shadow:
         0 10px 25px rgba(0, 0, 0, 0.05);
 }
+
+
+/* 상단 */
 
 .mood-header {
     display: flex;
@@ -57,15 +70,48 @@ body {
     font-weight: 600;
 }
 
-#today {
+#currentDate {
     color: var(--subtext);
     font-size: 7px;
 }
 
+
+/* 화면 전환 */
+
+.view-tabs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    margin-top: 8px;
+    padding-bottom: 6px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.view-tab {
+    padding: 2px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--empty);
+    font-size: 7px;
+
+    cursor: pointer;
+}
+
+.view-tab.active {
+    color: var(--text);
+    font-weight: 600;
+}
+
+
+/* 오늘의 기분 */
+
 .mood-stage {
     position: relative;
 
-    min-height: 90px;
+    min-height: 91px;
 
     display: flex;
     flex-direction: column;
@@ -77,7 +123,7 @@ body {
     position: relative;
     z-index: 2;
 
-    font-size: 23px;
+    font-size: 22px;
     font-weight: 500;
     line-height: 1;
 
@@ -101,33 +147,31 @@ body {
 }
 
 
-/* 기분 선택 버튼 */
+/* 기분 선택 */
 
 .mood-options {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 3px;
 
-    padding-top: 9px;
+    padding-top: 7px;
 
     border-top: 1px solid var(--line);
 }
 
 .mood-option {
     min-width: 0;
-    padding: 2px 0;
+    padding: 1px 0;
 
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 5px;
+    gap: 4px;
 
     border: 0;
     background: transparent;
 
     color: var(--subtext);
-    font-family: inherit;
-
     cursor: pointer;
 }
 
@@ -165,11 +209,148 @@ body {
 }
 
 
+/* 주간 및 월간 공통 */
+
+.history-view {
+    padding-top: 8px;
+}
+
+.period-header {
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    align-items: center;
+
+    margin-bottom: 8px;
+}
+
+.period-header strong {
+    text-align: center;
+    font-size: 8px;
+    font-weight: 600;
+}
+
+.period-header button {
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--subtext);
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+
+/* 주간 기록 */
+
+.week-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 3px;
+
+    min-height: 112px;
+}
+
+.week-day {
+    min-width: 0;
+    padding: 7px 1px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+
+    border-radius: 8px;
+}
+
+.week-day.today {
+    outline: 1px solid var(--text);
+    outline-offset: -1px;
+}
+
+.week-name,
+.week-date {
+    color: var(--subtext);
+    font-size: 6px;
+}
+
+.week-face {
+    min-height: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 7px;
+    white-space: nowrap;
+}
+
+.week-day.empty .week-face {
+    color: var(--empty);
+}
+
+
+/* 월간 기록 */
+
+.month-weekdays,
+.month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.month-weekdays {
+    margin-bottom: 3px;
+}
+
+.month-weekdays span {
+    color: var(--subtext);
+    font-size: 5px;
+    text-align: center;
+}
+
+.month-cell,
+.month-empty {
+    height: 18px;
+}
+
+.month-cell {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    font-size: 7px;
+}
+
+.month-cell.today {
+    outline: 1px solid var(--text);
+    outline-offset: -1px;
+}
+
+.month-cell.future {
+    opacity: 0.3;
+}
+
+.month-cell.no-record {
+    color: #d2d2d5;
+    font-size: 5px;
+}
+
+.month-expression {
+    font-size: 8px;
+    line-height: 1;
+}
+
+
 /* Happy */
 
 .mood-stage.happy .main-face {
-    animation:
-        happyBounce 0.65s ease;
+    animation: happyBounce 0.65s ease;
 }
 
 @keyframes happyBounce {
@@ -194,8 +375,7 @@ body {
 /* Calm */
 
 .mood-stage.calm .main-face {
-    animation:
-        calmBreath 2.4s ease-in-out infinite;
+    animation: calmBreath 2.4s ease-in-out infinite;
 }
 
 @keyframes calmBreath {
@@ -215,8 +395,7 @@ body {
 /* Tired */
 
 .mood-stage.tired .main-face {
-    animation:
-        sleepyNod 1.8s ease-in-out infinite;
+    animation: sleepyNod 1.8s ease-in-out infinite;
 }
 
 .mood-stage.tired .mood-effect {
@@ -226,9 +405,7 @@ body {
 
 .mood-stage.tired .mood-effect::after {
     content: "zZ";
-
-    animation:
-        sleepyText 1.8s ease-in-out infinite;
+    animation: sleepyText 1.8s ease-in-out infinite;
 }
 
 @keyframes sleepyNod {
@@ -262,8 +439,7 @@ body {
 /* Sad */
 
 .mood-stage.sad .main-face {
-    animation:
-        sadDrop 1.8s ease-in-out infinite;
+    animation: sadDrop 1.8s ease-in-out infinite;
 }
 
 .mood-stage.sad .mood-effect {
@@ -275,9 +451,7 @@ body {
     content: "˙";
 
     font-size: 15px;
-
-    animation:
-        tearDrop 1.8s ease-in infinite;
+    animation: tearDrop 1.8s ease-in infinite;
 }
 
 @keyframes sadDrop {
@@ -311,14 +485,13 @@ body {
 /* Angry */
 
 .mood-stage.angry .main-face {
-    animation:
-        angryShake 0.32s ease-in-out 3;
+    animation: angryShake 0.32s ease-in-out 3;
 }
 
 @keyframes angryShake {
     0%,
     100% {
-        transform: translateX(0) rotate(0deg);
+        transform: translateX(0) rotate(0);
     }
 
     25% {
