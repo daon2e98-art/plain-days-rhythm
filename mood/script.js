@@ -5,35 +5,35 @@ const moods = {
     happy: {
         face: "⁽˙ᵕ˙⁾",
         weekFace: "˙ᵕ˙",
-        monthFace: "ᵕ",
+        monthFace: "˙ᵕ˙",
         label: "Feeling happy"
     },
 
     calm: {
         face: "( ˘͈ ᵕ ˘͈ )",
         weekFace: "˘ᵕ˘",
-        monthFace: "˘",
+        monthFace: "˘ᵕ˘",
         label: "Feeling calm"
     },
 
     tired: {
         face: "(－_－) zzZ",
         weekFace: "－_－",
-        monthFace: "–",
+        monthFace: "－_－",
         label: "Feeling tired"
     },
 
     sad: {
         face: "(｡•́︿•̀｡)",
         weekFace: "•́︿•̀",
-        monthFace: "︿",
+        monthFace: "•́︿•̀",
         label: "Feeling sad"
     },
 
     angry: {
         face: "( •̀⤙•́ )",
         weekFace: "•̀⤙•́",
-        monthFace: "⤙",
+        monthFace: "•̀⤙•́",
         label: "Feeling angry"
     }
 };
@@ -110,10 +110,13 @@ function playNote(
         startTime
     );
 
-    gain.gain.linearRampToValueAtTime(
-        volume,
-        startTime + 0.015
-    );
+    const boostedVolume =
+    Math.min(volume * 4, 0.16);
+
+gain.gain.linearRampToValueAtTime(
+    boostedVolume,
+    startTime + 0.015
+);
 
     gain.gain.exponentialRampToValueAtTime(
         0.0001,
