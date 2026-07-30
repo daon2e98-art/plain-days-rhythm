@@ -13,7 +13,7 @@
 
     <link
         rel="stylesheet"
-        href="style.css?v=4"
+        href="style.css?v=6"
     >
 </head>
 
@@ -21,26 +21,31 @@
 
     <main class="mood-widget">
 
+        <!-- 상단 -->
+
         <header class="mood-header">
-    <span>Plain Days</span>
+            <span>Plain Days</span>
 
-    <div class="header-actions">
-        <button
-            id="soundToggle"
-            type="button"
-            title="Sound on/off"
-        >
-            ♪
-        </button>
+            <div class="header-actions">
+                <button
+                    id="soundToggle"
+                    type="button"
+                    title="Sound on/off"
+                >
+                    ♪
+                </button>
 
-        <span id="currentDate">
-            30 / 07
-        </span>
-    </div>
-</header>
+                <span id="currentDate">
+                    30 / 07
+                </span>
+            </div>
+        </header>
 
+
+        <!-- 화면 전환 -->
 
         <nav class="view-tabs">
+
             <button
                 class="view-tab active"
                 data-view="today"
@@ -64,6 +69,7 @@
             >
                 Month
             </button>
+
         </nav>
 
 
@@ -73,6 +79,7 @@
             class="view today-view"
             id="todayView"
         >
+
             <div
                 class="mood-stage"
                 id="moodStage"
@@ -93,6 +100,7 @@
                     How are you today?
                 </p>
             </div>
+
 
             <div class="mood-options">
 
@@ -147,6 +155,7 @@
                 </button>
 
             </div>
+
         </section>
 
 
@@ -157,7 +166,9 @@
             id="weekView"
             hidden
         >
+
             <header class="period-header">
+
                 <button
                     id="previousWeek"
                     type="button"
@@ -175,12 +186,14 @@
                 >
                     ›
                 </button>
+
             </header>
 
             <div
                 class="week-grid"
                 id="weekGrid"
             ></div>
+
         </section>
 
 
@@ -191,24 +204,29 @@
             id="monthView"
             hidden
         >
-            <header class="mood-header">
-    <span>Plain Days</span>
 
-    <div class="header-actions">
-        <button
-            id="soundToggle"
-            type="button"
-            title="Sound on/off"
-        >
-            ♪
-        </button>
+            <header class="period-header">
 
-        <span id="currentDate">
-            30 / 07
-        </span>
-    </div>
-</header>
-            
+                <button
+                    id="previousMonth"
+                    type="button"
+                    aria-label="Previous month"
+                >
+                    ‹
+                </button>
+
+                <strong id="monthTitle"></strong>
+
+                <button
+                    id="nextMonth"
+                    type="button"
+                    aria-label="Next month"
+                >
+                    ›
+                </button>
+
+            </header>
+
 
             <div class="month-weekdays">
                 <span>M</span>
@@ -220,15 +238,18 @@
                 <span>S</span>
             </div>
 
+
             <div
                 class="month-grid"
                 id="monthGrid"
             ></div>
+
         </section>
 
     </main>
 
-    <script src="script.js?v=4"></script>
+
+    <script src="script.js?v=6"></script>
 
 </body>
 
