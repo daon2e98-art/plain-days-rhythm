@@ -160,3 +160,10 @@ body {
     font-size: 9px !important;
     letter-spacing: 0.5px !important;
 }
+.time-row,
+.clock-time-row {
+    display: flex !important;
+    align-items: flex-end !important;
+    flex-wrap: nowrap !important;
+    white-space: nowrap !important;
+}
