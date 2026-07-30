@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Plain Days Mood</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css?v=1"
+    >
+</head>
+
+<body>
+
+    <main class="mood-widget">
+
+        <header class="mood-header">
+            <span>Plain Days</span>
+            <span id="today">30 / 07</span>
+        </header>
+
+        <section
+            class="mood-stage"
+            id="moodStage"
+        >
+            <div
+                class="main-face"
+                id="mainFace"
+            >
+                ⁽·—·⁾
+            </div>
+
+            <span
+                class="mood-effect"
+                id="moodEffect"
+            ></span>
+
+            <p id="moodLabel">
+                How are you today?
+            </p>
+        </section>
+
+        <section class="mood-options">
+
+            <button
+                class="mood-option"
+                data-mood="happy"
+                type="button"
+                title="Happy"
+            >
+                <span class="mini-face">⁽˙ᵕ˙⁾</span>
+                <span class="mood-dot">○</span>
+            </button>
+
+            <button
+                class="mood-option"
+                data-mood="calm"
+                type="button"
+                title="Calm"
+            >
+                <span class="mini-face">˘ᵕ˘</span>
+                <span class="mood-dot">○</span>
+            </button>
+
+            <button
+                class="mood-option"
+                data-mood="tired"
+                type="button"
+                title="Tired"
+            >
+                <span class="mini-face">－_－</span>
+                <span class="mood-dot">○</span>
+            </button>
+
+            <button
+                class="mood-option"
+                data-mood="sad"
+                type="button"
+                title="Sad"
+            >
+                <span class="mini-face">•́︿•̀</span>
+                <span class="mood-dot">○</span>
+            </button>
+
+            <button
+                class="mood-option"
+                data-mood="angry"
+                type="button"
+                title="Angry"
+            >
+                <span class="mini-face">•̀⤙•́</span>
+                <span class="mood-dot">○</span>
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="script.js?v=1"></script>
+
+</body>
+
+</html>
