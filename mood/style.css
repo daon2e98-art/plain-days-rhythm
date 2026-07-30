@@ -502,3 +502,43 @@ button {
         transform: translateX(3px) rotate(2deg);
     }
 }
+
+
+/* 효과음 버튼 */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+#soundToggle {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--text);
+    font-size: 8px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+#soundToggle:hover {
+    transform: scale(1.12);
+}
+
+#soundToggle.muted {
+    opacity: 0.3;
+}
