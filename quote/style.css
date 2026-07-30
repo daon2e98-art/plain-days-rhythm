@@ -101,28 +101,28 @@ body {
     font-size: 10px;
 }
 
-/* Quote Widget — 2/3 Compact Version */
+/* Quote Widget — Wide Compact Version */
 
 .quote-widget {
-    width: 153px !important;
+    width: 230px !important;
     height: 167px !important;
-    padding: 11px !important;
+    padding: 14px 16px !important;
 }
 
 .quote-header,
 .quote-header span {
-    font-size: 8px !important;
+    font-size: 9px !important;
 }
 
 .quote-label {
-    font-size: 7px !important;
+    font-size: 8px !important;
 }
 
 #quoteText,
 .quote-text {
-    font-size: 12px !important;
+    font-size: 15px !important;
     line-height: 1.35 !important;
-    letter-spacing: -0.25px !important;
+    letter-spacing: -0.3px !important;
 
     word-break: keep-all;
     overflow-wrap: break-word;
@@ -130,9 +130,9 @@ body {
 
 .quote-date,
 #quoteDate {
-    font-size: 7px !important;
+    font-size: 8px !important;
 }
 
 .quote-dot {
-    font-size: 11px !important;
+    font-size: 13px !important;
 }
