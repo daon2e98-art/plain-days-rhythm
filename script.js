@@ -1,4 +1,4 @@
-/* Plain Days Rhythm v14 */
+/* Plain Days Rhythm v15 */
 
 const HISTORY_KEY = "plain-days-rhythm-history";
 const LABEL_KEY = "plain-days-rhythm-labels";
