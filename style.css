@@ -1,449 +1,63 @@
-:root {
-    --card: #fafafa;
-    --text: #1d1d1f;
-    --subtext: #86868b;
-    --line: #e8e8e8;
-    --empty: #c7c7cc;
-}
+/* 습관 추가·편집 메뉴 */
 
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    min-height: 100vh;
-    padding: 6px;
+.habit-controls {
+    grid-column: 1 / -1;
 
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    gap: 10px;
 
-    background: #ffffff;
-
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "SF Pro Display",
-        Pretendard,
-        sans-serif;
-
-    color: var(--text);
+    margin-top: 7px;
 }
 
-.widget {
-    width: 230px;
-    padding: 14px;
-
-    display: grid;
-    grid-template-columns: 1fr auto;
-    column-gap: 12px;
-
-    background: var(--card);
-    border-radius: 15px;
-
-    box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.05);
-}
-
-/* 브랜드 */
-
-.brand h1 {
-    margin: 0;
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.brand p {
-    margin: 1px 0 0;
-    font-size: 8px;
-    color: var(--subtext);
-}
-
-/* 날짜 */
-
-.date {
-    margin: 0;
-    text-align: right;
-}
-
-#day {
-    display: block;
-
-    font-size: 7px;
-    letter-spacing: 1px;
-    color: var(--subtext);
-}
-
-#date {
-    display: block;
-    margin-top: 2px;
-
-    font-size: 10px;
-    font-weight: 500;
-}
-
-/* 습관 2열 */
-
-.habits {
-    grid-column: 1 / -1;
-
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 14px;
-
-    margin-top: 14px;
-}
-
-.habit {
-    min-width: 0;
-    height: 34px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 4px;
-
-    border-bottom: 1px solid var(--line);
-    cursor: pointer;
-}
-
-.habit span {
-    overflow: hidden;
-
-    font-size: 8px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-button {
-    flex-shrink: 0;
-
-    padding: 0;
+.habit-action {
+    padding: 3px 0;
     border: 0;
-    background: none;
-
-    color: var(--empty);
-    font-size: 12px;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-button.checked {
-    color: var(--text);
-    transform: scale(1.08);
-}
-
-/* 하단 */
-
-.divider {
-    grid-column: 1 / -1;
-
-    height: 1px;
-    margin: 12px 0 9px;
-
-    background: var(--line);
-}
-
-.progress {
-    grid-column: 1 / -1;
-
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 6px;
-}
-
-#percent {
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.progress p {
-    margin: 0;
-
-    color: var(--subtext);
-    font-size: 8px;
-}
-
-.quote {
-    grid-column: 1 / -1;
-
-    margin-top: 9px;
-
-    text-align: center;
-    color: var(--subtext);
-    font-size: 7px;
-    font-style: italic;
-}
-
-
-.habit span[contenteditable="true"] {
-    flex: 1;
-    min-width: 0;
-    padding: 3px;
-    margin-left: -3px;
-
-    outline: none;
-    border-radius: 4px;
-    cursor: text;
-}
-
-.habit span[contenteditable="true"]:focus {
-    background: #eeeeef;
-}
-
-/* 글씨와 동그라미 크기 조정 */
-
-.habit {
-    height: auto;
-    min-height: 39px;
-    padding: 6px 0;
-}
-
-.habit span,
-.habit span[contenteditable="true"] {
-    flex: 1;
-    min-width: 0;
-
-    font-size: 10px;
-    font-weight: 450;
-    line-height: 1.3;
-
-    white-space: normal;
-    word-break: keep-all;
-    overflow-wrap: anywhere;
-
-    overflow: visible;
-    text-overflow: clip;
-}
-
-/* 완료 동그라미 */
-
-.habit button {
-    margin-left: 5px;
-
-    font-size: 15px;
-    line-height: 1;
-
-    transition:
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.habit button.checked {
-    transform: scale(1.1);
-}
-
-/* 편집 중인 이름 */
-
-.habit span[contenteditable="true"]:focus {
-    padding: 4px;
-    margin-left: -4px;
-
-    background: #eeeeef;
-    border-radius: 5px;
-}
-
-/* 월간 히트맵 버튼 */
-
-.history-toggle {
-    grid-column: 1 / -1;
-
-    width: 100%;
-    margin-top: 10px;
-    padding: 6px;
-
-    border: 0;
-    border-top: 1px solid var(--line);
     background: transparent;
 
     color: var(--subtext);
-    font-size: 8px;
+    font-size: 7px;
     cursor: pointer;
 }
 
-
-/* 월간 기록 영역 */
-
-.history-panel {
-    grid-column: 1 / -1;
-    margin-top: 8px;
+.habit-action:hover {
+    color: var(--text);
 }
 
-.history-panel[hidden] {
+.habit-action:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+
+/* 삭제 버튼 */
+
+.delete-habit {
     display: none;
-}
 
-.month-header {
-    display: grid;
-    grid-template-columns: 22px 1fr 22px;
-    align-items: center;
+    flex-shrink: 0;
+    margin-left: 5px;
+    padding: 0;
 
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.month-header strong {
-    font-size: 9px;
-    font-weight: 600;
-}
-
-.month-nav {
-    padding: 2px;
     border: 0;
     background: transparent;
 
-    color: var(--subtext);
+    color: #aaaab0;
     font-size: 14px;
     cursor: pointer;
 }
 
-
-/* 요일과 날짜 */
-
-.weekdays,
-.heatmap-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
+.habits.editing .delete-habit {
+    display: block;
 }
 
-.weekdays {
-    margin-bottom: 4px;
-}
-
-.weekdays span {
-    text-align: center;
-    color: var(--subtext);
-    font-size: 6px;
-}
-
-.heatmap-day,
-.heatmap-empty {
-    aspect-ratio: 1;
-}
-
-.heatmap-day {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    color: #86868b;
-    font-size: 6px;
-}
-
-
-/* 완료 정도 */
-
-.heatmap-day.level-0 {
-    background: #eeeeef;
-}
-
-.heatmap-day.level-1 {
-    background: #d6d6d8;
-}
-
-.heatmap-day.level-2 {
-    background: #aaaab0;
-    color: #ffffff;
-}
-
-.heatmap-day.level-3 {
-    background: #656569;
-    color: #ffffff;
-}
-
-.heatmap-day.level-4 {
-    background: #1d1d1f;
-    color: #ffffff;
-}
-
-.heatmap-day.today {
-    outline: 1px solid #1d1d1f;
-    outline-offset: 2px;
-}
-
-
-/* 월간 화면으로 전환 */
-
-.widget.month-mode > .brand,
-.widget.month-mode > .date,
-.widget.month-mode > .habits,
-.widget.month-mode > .divider,
-.widget.month-mode > .progress,
-.widget.month-mode > .quote {
+.habits.editing .habit-check {
     display: none;
 }
 
-/* 월간 화면을 카드 첫 번째 위치에 표시 */
 
-.widget.month-mode .history-panel {
-    grid-column: 1 / -1;
-    grid-row: 1;
+/* 월간 화면에서는 편집 메뉴 숨기기 */
 
-    width: 100%;
-    margin-top: 0;
-}
-
-/* 돌아가기 버튼을 카드 하단에 표시 */
-
-.widget.month-mode .history-toggle {
-    grid-column: 1 / -1;
-    grid-row: 2;
-
-    margin-top: 12px;
-}
-
-/* 두 화면의 카드 크기 안정화 */
-
-.widget {
-    min-height: 230px;
-}
-
-.widget.month-mode {
-    align-content: start;
-}
-
-
-/* 기록 없는 지난 날짜 */
-
-.heatmap-day.no-record {
-    background: transparent;
-    color: #b8b8bd;
-}
-
-/* 아직 오지 않은 날짜 */
-
-.heatmap-day.future {
-    background: transparent;
-    color: #dddddf;
-    opacity: 0.45;
-}
-
-/* 오늘 날짜 */
-
-.heatmap-day.today {
-    outline: 1px solid #1d1d1f;
-    outline-offset: 2px;
-}
-
-/* 부드러운 변화 */
-
-.heatmap-day {
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.heatmap-day:hover {
-    transform: scale(1.08);
+.widget.month-mode > .habit-controls {
+    display: none;
 }
