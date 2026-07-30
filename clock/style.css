@@ -1,0 +1,108 @@
+:root {
+    --background: #ffffff;
+    --card: #fafafa;
+    --text: #1d1d1f;
+    --subtext: #86868b;
+    --line: #e8e8e8;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: var(--background);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        Pretendard,
+        sans-serif;
+
+    color: var(--text);
+}
+
+.clock-widget {
+    width: 230px;
+    min-height: 115px;
+    padding: 14px;
+
+    background: var(--card);
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.clock-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.live-dot {
+    width: 5px;
+    height: 5px;
+
+    background: var(--text);
+    border-radius: 50%;
+
+    animation: breathe 2s ease-in-out infinite;
+}
+
+.time-area {
+    display: flex;
+    align-items: flex-end;
+
+    margin-top: 12px;
+
+    font-variant-numeric: tabular-nums;
+}
+
+#time {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 0.9;
+    letter-spacing: -1.5px;
+}
+
+#seconds {
+    margin-left: 6px;
+
+    color: var(--subtext);
+    font-size: 10px;
+    line-height: 1;
+}
+
+#date {
+    margin: 10px 0 0;
+
+    color: var(--subtext);
+    font-size: 8px;
+    letter-spacing: 0.3px;
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        opacity: 0.35;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
