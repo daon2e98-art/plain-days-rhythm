@@ -548,3 +548,160 @@ button {
 #soundToggle.muted {
     opacity: 0.3;
 }
+
+
+/* ========================================
+   Mood Widget — Larger Text Version
+======================================== */
+
+
+/* 카드 높이 */
+
+.mood-widget {
+    height: 250px;
+}
+
+
+/* 상단 브랜드와 날짜 */
+
+.mood-header {
+    font-size: 11px;
+}
+
+#currentDate {
+    font-size: 9px;
+}
+
+#soundToggle {
+    width: 17px;
+    height: 17px;
+
+    font-size: 11px;
+}
+
+
+/* Today · Week · Month */
+
+.view-tabs {
+    margin-top: 10px;
+    padding-bottom: 8px;
+}
+
+.view-tab {
+    padding: 4px 2px;
+
+    font-size: 9px;
+}
+
+
+/* 오늘의 표정 */
+
+.mood-stage {
+    min-height: 112px;
+}
+
+.main-face {
+    font-size: 30px;
+}
+
+#moodLabel {
+    margin-top: 13px;
+
+    font-size: 10px;
+}
+
+
+/* 하단 기분 선택 */
+
+.mood-options {
+    padding-top: 10px;
+}
+
+.mood-option {
+    gap: 6px;
+}
+
+.mini-face {
+    font-size: 9px;
+}
+
+.mood-dot {
+    font-size: 15px;
+}
+
+
+/* 주간·월간 제목 */
+
+.history-view {
+    padding-top: 10px;
+}
+
+.period-header {
+    grid-template-columns: 25px 1fr 25px;
+
+    margin-bottom: 10px;
+}
+
+.period-header strong {
+    font-size: 10px;
+}
+
+.period-header button {
+    font-size: 17px;
+}
+
+
+/* 주간 기록 */
+
+.week-grid {
+    min-height: 145px;
+}
+
+.week-day {
+    padding: 9px 1px;
+    gap: 12px;
+}
+
+.week-name,
+.week-date {
+    font-size: 8px;
+}
+
+.week-face {
+    min-height: 14px;
+
+    font-size: 9px;
+}
+
+
+/* 월간 요일 */
+
+.month-weekdays {
+    margin-bottom: 5px;
+}
+
+.month-weekdays span {
+    font-size: 7px;
+}
+
+
+/* 월간 기록 */
+
+.month-weekdays,
+.month-grid {
+    gap: 3px 2px;
+}
+
+.month-cell,
+.month-empty {
+    height: 22px;
+}
+
+.month-cell.no-record {
+    font-size: 7px;
+}
+
+.month-expression {
+    font-size: 8px;
+    letter-spacing: -0.5px;
+}
