@@ -1,0 +1,331 @@
+:root {
+    --background: #ffffff;
+    --card: #fafafa;
+    --text: #1d1d1f;
+    --subtext: #86868b;
+    --line: #e8e8e8;
+    --empty: #c7c7cc;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 6px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: var(--background);
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "SF Pro Display",
+        "Apple Symbols",
+        Pretendard,
+        sans-serif;
+
+    color: var(--text);
+}
+
+.mood-widget {
+    width: 230px;
+    min-height: 175px;
+    padding: 14px;
+
+    background: var(--card);
+    border-radius: 15px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.mood-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 8px;
+}
+
+.mood-header span:first-child {
+    font-weight: 600;
+}
+
+#today {
+    color: var(--subtext);
+    font-size: 7px;
+}
+
+.mood-stage {
+    position: relative;
+
+    min-height: 90px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-face {
+    position: relative;
+    z-index: 2;
+
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1;
+
+    transform-origin: center;
+}
+
+#moodLabel {
+    margin: 11px 0 0;
+
+    color: var(--subtext);
+    font-size: 8px;
+}
+
+.mood-effect {
+    position: absolute;
+
+    color: var(--subtext);
+    font-size: 8px;
+
+    pointer-events: none;
+}
+
+
+/* 기분 선택 버튼 */
+
+.mood-options {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+
+    padding-top: 9px;
+
+    border-top: 1px solid var(--line);
+}
+
+.mood-option {
+    min-width: 0;
+    padding: 2px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--subtext);
+    font-family: inherit;
+
+    cursor: pointer;
+}
+
+.mini-face {
+    font-size: 7px;
+    white-space: nowrap;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mood-dot {
+    color: var(--empty);
+    font-size: 11px;
+    line-height: 1;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.mood-option.selected {
+    color: var(--text);
+}
+
+.mood-option.selected .mini-face {
+    color: var(--text);
+    transform: translateY(-1px);
+}
+
+.mood-option.selected .mood-dot {
+    color: var(--text);
+    transform: scale(1.1);
+}
+
+
+/* Happy */
+
+.mood-stage.happy .main-face {
+    animation:
+        happyBounce 0.65s ease;
+}
+
+@keyframes happyBounce {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    35% {
+        transform: translateY(-7px) scale(1.1);
+    }
+
+    65% {
+        transform: translateY(1px) scale(0.98);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* Calm */
+
+.mood-stage.calm .main-face {
+    animation:
+        calmBreath 2.4s ease-in-out infinite;
+}
+
+@keyframes calmBreath {
+    0%,
+    100% {
+        transform: scale(0.96);
+        opacity: 0.75;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 1;
+    }
+}
+
+
+/* Tired */
+
+.mood-stage.tired .main-face {
+    animation:
+        sleepyNod 1.8s ease-in-out infinite;
+}
+
+.mood-stage.tired .mood-effect {
+    top: 21px;
+    right: 69px;
+}
+
+.mood-stage.tired .mood-effect::after {
+    content: "zZ";
+
+    animation:
+        sleepyText 1.8s ease-in-out infinite;
+}
+
+@keyframes sleepyNod {
+    0%,
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(4deg) translateY(3px);
+    }
+}
+
+@keyframes sleepyText {
+    0% {
+        opacity: 0;
+        transform: translateY(3px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+}
+
+
+/* Sad */
+
+.mood-stage.sad .main-face {
+    animation:
+        sadDrop 1.8s ease-in-out infinite;
+}
+
+.mood-stage.sad .mood-effect {
+    top: 43px;
+    left: 101px;
+}
+
+.mood-stage.sad .mood-effect::after {
+    content: "˙";
+
+    font-size: 15px;
+
+    animation:
+        tearDrop 1.8s ease-in infinite;
+}
+
+@keyframes sadDrop {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(2px);
+    }
+}
+
+@keyframes tearDrop {
+    0% {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    35% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+}
+
+
+/* Angry */
+
+.mood-stage.angry .main-face {
+    animation:
+        angryShake 0.32s ease-in-out 3;
+}
+
+@keyframes angryShake {
+    0%,
+    100% {
+        transform: translateX(0) rotate(0deg);
+    }
+
+    25% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+
+    75% {
+        transform: translateX(3px) rotate(2deg);
+    }
+}
