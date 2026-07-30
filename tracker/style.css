@@ -585,3 +585,118 @@ body {
 
     margin-top: 12px;
 }
+
+/* Habit Tracker — Larger Text, Same Card Size */
+
+/* 카드 크기 유지 */
+
+.widget {
+    width: 230px !important;
+}
+
+
+/* 상단 브랜드 */
+
+.brand h1 {
+    font-size: 12px !important;
+}
+
+.brand p {
+    font-size: 8px !important;
+    margin-top: 2px !important;
+}
+
+
+/* 날짜 */
+
+#day {
+    font-size: 8px !important;
+    letter-spacing: 2px !important;
+}
+
+#date {
+    font-size: 11px !important;
+}
+
+
+/* 습관 목록 */
+
+.habit {
+    min-height: 43px !important;
+    padding: 8px 0 !important;
+    gap: 7px !important;
+}
+
+.habit span {
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+
+.habit button {
+    flex: 0 0 auto;
+
+    padding: 2px !important;
+
+    font-size: 16px !important;
+    line-height: 1 !important;
+}
+
+
+/* 습관 추가·편집 */
+
+.habit-actions,
+.list-actions {
+    font-size: 8px !important;
+}
+
+.add-habit,
+.edit-list,
+#addHabit,
+#editList {
+    font-size: 8px !important;
+}
+
+
+/* 완료율 */
+
+#percent {
+    font-size: 20px !important;
+}
+
+.progress p,
+.progress-label {
+    font-size: 8px !important;
+}
+
+.quote {
+    font-size: 8px !important;
+}
+
+
+/* 월간 기록 버튼 */
+
+.history-toggle {
+    font-size: 8px !important;
+}
+
+
+/* 월간 화면 */
+
+.month-header strong {
+    font-size: 10px !important;
+}
+
+.month-nav {
+    font-size: 16px !important;
+}
+
+.weekdays span {
+    font-size: 7px !important;
+}
+
+.heatmap-day {
+    font-size: 7px !important;
+}
