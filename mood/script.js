@@ -111,7 +111,7 @@ function playNote(
     );
 
     const boostedVolume =
-    Math.min(volume * 4, 0.16);
+    Math.min(volume * 10, 0.4);
 
 gain.gain.linearRampToValueAtTime(
     boostedVolume,
