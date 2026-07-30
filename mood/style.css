@@ -705,3 +705,75 @@ button {
     font-size: 8px;
     letter-spacing: -0.5px;
 }
+
+/* Mood Widget — Force Larger Text */
+
+.mood-widget {
+    height: 250px !important;
+    padding: 16px !important;
+}
+
+.mood-header,
+.mood-header span {
+    font-size: 11px !important;
+}
+
+#currentDate {
+    font-size: 9px !important;
+}
+
+#soundToggle {
+    font-size: 12px !important;
+}
+
+.view-tab {
+    font-size: 10px !important;
+}
+
+.mood-stage {
+    min-height: 112px !important;
+}
+
+.main-face,
+#mainFace {
+    font-size: 32px !important;
+}
+
+#moodLabel {
+    font-size: 11px !important;
+}
+
+.mini-face {
+    font-size: 10px !important;
+}
+
+.mood-dot {
+    font-size: 16px !important;
+}
+
+.period-header strong,
+#weekTitle,
+#monthTitle {
+    font-size: 11px !important;
+}
+
+.period-header button {
+    font-size: 18px !important;
+}
+
+.week-name,
+.week-date {
+    font-size: 8px !important;
+}
+
+.week-face {
+    font-size: 10px !important;
+}
+
+.month-weekdays span {
+    font-size: 7px !important;
+}
+
+.month-expression {
+    font-size: 9px !important;
+}
