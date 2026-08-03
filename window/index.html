@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Plain Days — A little window</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="window-widget" id="widget">
+    <section class="viewer" id="viewer" aria-label="Photo slideshow">
+      <div class="empty-state" id="emptyState">
+        <span class="pebble" aria-hidden="true"><i></i><i></i></span>
+        <strong>A little window</strong>
+        <p>Add a few scenes you’re drawn to.</p>
+        <button class="add-first" id="addFirst" type="button">+ Add photos</button>
+      </div>
+
+      <img class="slide current" id="currentSlide" alt="A personal inspiration">
+      <img class="slide next" id="nextSlide" alt="">
+
+      <header class="topbar">
+        <span class="brand">Plain Days</span>
+        <button class="edit-button" id="editButton" type="button" aria-label="Edit photos">Edit</button>
+      </header>
+
+      <footer class="caption-bar" id="captionBar">
+        <span id="caption">A little window.</span>
+        <span id="counter">01 / 01</span>
+      </footer>
+
+      <button class="previous hit-area" id="previousButton" type="button" aria-label="Previous photo"></button>
+      <button class="next-button hit-area" id="nextButton" type="button" aria-label="Next photo"></button>
+    </section>
+
+    <section class="editor" id="editor" hidden aria-label="Photo editor">
+      <header class="editor-header">
+        <div>
+          <strong>Your little window</strong>
+          <span>Up to 6 photos · saved on this device</span>
+        </div>
+        <button class="done-button" id="doneButton" type="button">Done</button>
+      </header>
+
+      <div class="photo-grid" id="photoGrid"></div>
+
+      <label class="upload-button" id="uploadLabel">
+        <input id="photoInput" type="file" accept="image/*" multiple>
+        <span>+ Add photos</span>
+      </label>
+
+      <div class="editor-options">
+        <label>
+          <span>Change every</span>
+          <select id="intervalSelect">
+            <option value="5000">5 seconds</option>
+            <option value="8000" selected>8 seconds</option>
+            <option value="12000">12 seconds</option>
+            <option value="0">Only on click</option>
+          </select>
+        </label>
+        <label>
+          <span>Photo fit</span>
+          <select id="fitSelect">
+            <option value="cover" selected>Fill frame</option>
+            <option value="contain">Show full photo</option>
+          </select>
+        </label>
+      </div>
+
+      <p class="privacy-note">Photos stay in this browser. They are not uploaded to Plain Days.</p>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
