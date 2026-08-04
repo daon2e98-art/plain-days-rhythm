@@ -5,30 +5,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>Plain Days Bookshelf</title>
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
   <main class="widget">
     <header class="header">
-      <div class="brand">
-        <strong>Plain Days</strong>
-        <span>My bookshelf</span>
-      </div>
+      <div class="brand"><strong>Plain Days</strong></div>
+      <nav class="shelf-tabs" aria-label="Bookshelf views">
+        <button class="shelf-tab active" data-view="reading" type="button">Reading</button>
+        <button class="shelf-tab" data-view="eternal" type="button">Eternal</button>
+      </nav>
       <button class="quiet-button" id="editButton" type="button">Edit</button>
     </header>
 
-    <section class="shelf-scene" aria-label="Interactive bookshelf">
-      <div class="plant" aria-hidden="true">
-        <i class="leaf leaf-one"></i>
-        <i class="leaf leaf-two"></i>
-        <i class="leaf leaf-three"></i>
-        <span class="pot"></span>
+    <section class="view" id="readingView">
+      <div class="shelf-scene" id="shelfScene" aria-label="Interactive bookshelf">
+        <div class="shelf-track" id="shelfTrack">
+          <div class="plant" aria-hidden="true">
+            <i class="leaf leaf-one"></i><i class="leaf leaf-two"></i><i class="leaf leaf-three"></i>
+            <span class="pot"></span>
+          </div>
+          <div class="books" id="books"></div>
+          <div class="plainy" aria-hidden="true"><img src="assets/plainy-companion.png" alt=""></div>
+          <div class="shelf"></div>
+        </div>
       </div>
-      <div class="books" id="books"></div>
-      <div class="plainy" aria-hidden="true">
-        <img src="assets/plainy-companion.png" alt="">
+    </section>
+
+    <section class="view eternal-view" id="eternalView" hidden>
+      <div class="eternal-head">
+        <strong>Your eternal shelf</strong>
+        <span id="eternalCount">0 books remembered</span>
       </div>
-      <div class="shelf"></div>
+      <div class="eternal-list" id="eternalList"></div>
     </section>
 
     <aside class="book-card" id="bookCard" hidden>
@@ -41,42 +50,61 @@
     </aside>
 
     <section class="editor" id="editor" hidden>
-      <div class="editor-head">
-        <strong>Edit shelf</strong>
-        <span>Up to 9 books</span>
-      </div>
+      <div class="editor-head"><strong>Edit shelf</strong><span>Up to 16 books</span></div>
       <div class="editor-list" id="editorList"></div>
       <div class="add-row">
         <input id="newTitle" maxlength="42" placeholder="Book title">
         <button id="addBook" type="button">＋ Add</button>
       </div>
     </section>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden>
+      <section class="completion-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <span class="modal-mark" id="modalMark">○ → ●</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalMessage"></p>
+        <textarea id="memoryNote" maxlength="600" placeholder="A line, a feeling, or an idea you want to keep…" hidden></textarea>
+        <div class="modal-actions">
+          <button class="secondary-action" id="modalSecondary" type="button"></button>
+          <button class="primary-action" id="modalPrimary" type="button"></button>
+        </div>
+      </section>
+    </div>
   </main>
 
   <template id="bookTemplate">
-    <button class="book" type="button">
-      <span class="book-pages"></span>
-      <span class="spine-title"></span>
-    </button>
+    <button class="book" type="button"><span class="book-pages"></span><span class="spine-title"></span></button>
   </template>
 
   <template id="editorRowTemplate">
-    <div class="editor-row">
-      <input class="edit-title" maxlength="42" aria-label="Book title">
-      <input class="edit-author" maxlength="32" aria-label="Author" placeholder="Author">
-      <select class="edit-color" aria-label="Book color">
-        <option value="pearl">Pearl</option>
-        <option value="silver">Silver</option>
-        <option value="mist">Mist</option>
-        <option value="stone">Stone</option>
-        <option value="smoke">Smoke</option>
-      </select>
-      <button class="move-up" type="button" aria-label="Move left">←</button>
-      <button class="move-down" type="button" aria-label="Move right">→</button>
-      <button class="delete-book" type="button" aria-label="Delete">×</button>
-    </div>
+    <article class="book-editor-card">
+      <div class="book-editor-main">
+        <input class="edit-title" maxlength="42" aria-label="Book title">
+        <input class="edit-author" maxlength="32" aria-label="Author" placeholder="Author">
+        <select class="edit-color" aria-label="Book color">
+          <option value="pearl">Pearl</option><option value="silver">Silver</option>
+          <option value="mist">Mist</option><option value="stone">Stone</option><option value="smoke">Smoke</option>
+        </select>
+        <button class="delete-book" type="button" aria-label="Delete">×</button>
+      </div>
+      <div class="progress-editor">
+        <span>Reading</span>
+        <input class="edit-progress" type="range" min="0" max="100" step="1" aria-label="Reading progress">
+        <output class="progress-output"></output>
+        <button class="move-up" type="button" aria-label="Move left">←</button>
+        <button class="move-down" type="button" aria-label="Move right">→</button>
+      </div>
+    </article>
   </template>
 
-  <script src="script.js?v=3"></script>
+  <template id="eternalItemTemplate">
+    <article class="eternal-item">
+      <span class="eternal-dot">●</span>
+      <div><strong></strong><span class="eternal-meta"></span><p></p></div>
+      <button class="return-book" type="button" title="Return to reading shelf">↩</button>
+    </article>
+  </template>
+
+  <script src="script.js?v=4"></script>
 </body>
 </html>
