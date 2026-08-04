@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Plain Days Bookshelf</title>
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+  <main class="widget">
+    <header class="header">
+      <div class="brand">
+        <strong>Plain Days</strong>
+        <span>My bookshelf</span>
+      </div>
+      <button class="quiet-button" id="editButton" type="button">Edit</button>
+    </header>
+
+    <section class="shelf-scene" aria-label="Interactive bookshelf">
+      <div class="plant" aria-hidden="true">
+        <i class="leaf leaf-one"></i>
+        <i class="leaf leaf-two"></i>
+        <i class="leaf leaf-three"></i>
+        <span class="pot"></span>
+      </div>
+      <div class="books" id="books"></div>
+      <div class="pebble" aria-hidden="true"><span>·ᴗ·</span></div>
+      <div class="shelf"></div>
+    </section>
+
+    <aside class="book-card" id="bookCard" hidden>
+      <button class="card-close" id="cardClose" type="button" aria-label="Close">×</button>
+      <span class="card-label">Now selected</span>
+      <strong id="cardTitle"></strong>
+      <span id="cardAuthor"></span>
+      <div class="progress-track"><i id="cardProgress"></i></div>
+      <small id="cardProgressText"></small>
+    </aside>
+
+    <section class="editor" id="editor" hidden>
+      <div class="editor-head">
+        <strong>Edit shelf</strong>
+        <span>Up to 9 books</span>
+      </div>
+      <div class="editor-list" id="editorList"></div>
+      <div class="add-row">
+        <input id="newTitle" maxlength="42" placeholder="Book title">
+        <button id="addBook" type="button">＋ Add</button>
+      </div>
+    </section>
+  </main>
+
+  <template id="bookTemplate">
+    <button class="book" type="button">
+      <span class="book-pages"></span>
+      <span class="spine-title"></span>
+    </button>
+  </template>
+
+  <template id="editorRowTemplate">
+    <div class="editor-row">
+      <input class="edit-title" maxlength="42" aria-label="Book title">
+      <input class="edit-author" maxlength="32" aria-label="Author" placeholder="Author">
+      <select class="edit-color" aria-label="Book color">
+        <option value="pearl">Pearl</option>
+        <option value="silver">Silver</option>
+        <option value="mist">Mist</option>
+        <option value="stone">Stone</option>
+        <option value="smoke">Smoke</option>
+      </select>
+      <button class="move-up" type="button" aria-label="Move left">←</button>
+      <button class="move-down" type="button" aria-label="Move right">→</button>
+      <button class="delete-book" type="button" aria-label="Delete">×</button>
+    </div>
+  </template>
+
+  <script src="script.js?v=2"></script>
+</body>
+</html>
